@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            padding: 10%;
+        }
+        .sp{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            letter-spacing: 4px;
+        }
+        .p1{
+            font-size: 4.3em;
+            font-weight: 900;
+        }
+        .p2{
+            font-size: 1.4em;
+            padding-left: 2px;
+        }
+        table{
+            padding-top: 10px;
+            width: 500px;
+        }
+        button{
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 60px;
+            height: 30px;
+            box-shadow: 1px 1px 2px lightgrey;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <span class="sp p1">Print Data</span>
+        <br>
+        <span class="sp p2">Data Type: id name grade</span>
+        <br>
+        <br>
+        <table>
+            <tr>
+                <td>        
+                    <label for="inp">姓名或ID</label>
+                </td>
+                <td>
+                    <input type="text" id="inp" name="inp" placeholder="type data keyword...">  
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="grade">成績</label>
+                </td>
+                <td>
+                    <input type="number" id="grade" name="grade" placeholder="type data keyword...">
+                    <select name="subj" id="subj">
+                        <option value="chi">中文</option>
+                        <option value="eng">英文</option>
+                        <option value="mat">數學</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" onclick="func1()" id="btn">submit</button>
+
+    </div>
+    <script>
+        var inp=document.getElementById("inp");
+        var btn=document.getElementById("btn");
+        var selec=document.getElementById("subj");
+        var grade=document.getElementById("grade");
+        var temp="";
+        function func1(){
+            var arr1=[inp.value,selec.selectedIndex,parseInt(grade.value)];
+            console.log(arr1);
+            temp=arr1[0].slice(0,4);
+            if(temp=="s100"){
+                console.log("1");
+                location.href="http://192.168.1.180/php_playground/mysql/tab/print.php?id="+arr1[0]+"&name=&inp="+arr1[1]+"&grade="+arr1[2]; 
+            }else{
+                console.log("2");
+                location.href="http://192.168.1.180/php_playground/mysql/tab/print.php?id=&name="+arr1[0]+"&inp="+arr1[1]+"&grade="+arr1[2]; 
+            }
+        }
+    </script>
+</body>
+</html>
